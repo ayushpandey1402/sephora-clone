@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Licious - Address Page</title>
+   
+
+  <style>
+.bag{
+  
+  width: 80%;
+  height: fit-content ;
+  /* border: 1px solid red; */
+  margin-right: 3rem;
+  display: flex;
+  margin-left: 300px;
+  /* justify-content: space-between; */
+  padding: 50px;
+}
+
+.bag > div {
+  width: 40%;
+  height: 500px;
+  /* border: 1px solid gray; */
+}
+
+h1 {
+  font-family: Lato;
+}
+#container {
+  display: flex;
+  height: auto;
+  width: 25%;
+  margin-left: 100px;
+  border-radius: 5px;
+  padding: 30px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding-left: 80px;
+}
+
+h1 {
+  color: grey;
+}
+.inputstyle {
+  width: 90%;
+  height: 25px;
+  /* margin-top: 50px; */
+  /* justify-content: space-between; */
+  margin-bottom: 20px;
+  margin: 2px;
+  border: none;
+  border-bottom: 1px solid grey;
+  /* margin-left: 20px; */
+}
+#login {
+  width: 95%;
+  height: 50px;
+  text-align: center;
+  color: white;
+  background-color: black;
+  padding: 5px;
+  border-radius: 3px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.space {
+  margin-bottom: 30px;
+}
+#login:hover{
+  background-color: crimson;
+  color: white;
+  cursor: pointer;
+}
+/* .radioDiv {
+  margin-top: 100px;
+  font-size: 30px;
+  color: gray;
+} */
+
+a {
+  text-decoration: none;
+  color: white;
+}
+#box {
+  width: 10px;
+  height: 10px;
+  background-color: red;
+}
+  </style>
+
+</head>
+<body>
+    <div class="bag">
+        <div id="container">
+          <form action="" id="form">
+            <h1>Add New Address</h1>
+            <div class="space">
+              <input
+                type="text"
+                id="location"
+                placeholder="Enter Location"
+                class="inputstyle"
+              required/>
+            </div>
+  
+            <div class="space">
+              <input
+                type="text"
+                id="address"
+                placeholder="Flat no/Building no/Street name"
+                class="inputstyle"
+              required/>
+            </div>
+            <div class="space">
+              <input
+                type="text"
+                name=""
+                id="landmark"
+                placeholder="LandMark(optional)"
+                class="inputstyle"
+              required/>
+            </div>
+            <div class="space">
+              <input
+                type="text"
+                name=""
+                id="city"
+                placeholder="city"
+                class="inputstyle"
+              required/>
+            </div>
+            <div class="space">
+              <input
+                type="number"
+                name=""
+                id="mobileNo"
+                placeholder="Mobile No"
+                class="inputstyle"
+              required/>
+            </div>
+            <div class="space">
+              <button id="login"><a href="payment.html">Proceed to Checkout</a></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </body>
+  </html>
+
+  <script>
+
+    
+      document.querySelector("#form").addEventListener("submit", ganerateForm);
+var addressdata = JSON.parse(localStorage.getItem(addressdata)) || [];
+function ganerateForm(event) {
+  event.preventDefault();
+  var location = document.querySelector("#location").value;
+  var addres = document.querySelector("#address").value;
+  var landmark = document.querySelector("#landmark").value;
+  var city = document.querySelector("#city").value;
+  var mobileNo = document.querySelector("#mobileNo").value;
+  var addresobj = {
+    location: location,
+    addres: addres,
+    landmark: landmark,
+    city: city,
+    mobileNo: mobileNo,
+  };
+
+  addressdata.push(addresobj);
+  localStorage.setItem("addressdata", JSON.stringify(addressdata));
+  document.querySelector(".radioDiv>#address").style.color = "green";
+}
+  </script>
